@@ -1,12 +1,11 @@
-package com.example.springboot;
+package com.example.springboot.controller;
 
 import com.example.springboot.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class HelloController {
@@ -40,6 +39,16 @@ public class HelloController {
 
 	// localhost:8082/api/multiply/2?number=120  =expectedResult = 240 - use only reuest Param
 
+
+	@PostMapping("/api/collection")
+	public void postData(@RequestBody List<Integer> inputData) {
+		for (Integer test: inputData) {
+			System.out.println(test);
+
+		}
+
+
+	}
 
 
 
