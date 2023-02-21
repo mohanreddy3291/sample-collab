@@ -1,9 +1,8 @@
 package com.example.springboot;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class HelloController {
@@ -24,12 +23,17 @@ public Integer total(@PathVariable("first") Integer first,
 
 @GetMapping("/api/multiply")
 	public Integer multiply(@RequestParam("number1") Integer number1,
-							@RequestParam("number2") Integer number2)
-{
+							@RequestParam("number2") Integer number2) {
 	Integer multiply = number1 * number2;
 	return multiply;
 }
-
-
+@PostMapping("/api/collections")
+	public void postData(@RequestBody List<Integer> inputData)
+{
+	for(Integer test:inputData)
+	{
+		System.out.println(test*2);
+	}
+}
 
 }
