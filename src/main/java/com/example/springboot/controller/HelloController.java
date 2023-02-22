@@ -42,6 +42,7 @@ public class HelloController {
 
 	@PostMapping("/api/collection")
 	public void postData(@RequestBody List<Integer> inputData) {
+		//this is test committed file
 		for (Integer test: inputData) {
 			System.out.println(test);
 
