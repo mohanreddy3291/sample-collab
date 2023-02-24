@@ -2,7 +2,10 @@ package com.example.springboot;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class HelloController {
@@ -49,9 +52,43 @@ public class HelloController {
 	}
 
 	@PostMapping("/api/postBody/{first}")
-	public String postBody(@RequestBody String input, @PathVariable("first") Integer first, @RequestParam("number1") Integer number1)
-	{
+	public String postBody(@RequestBody String input, @PathVariable("first") Integer first, @RequestParam("number1") Integer number1) {
 		System.out.println(input);
-		return first+"   "+number1;
+		return first + "   " + number1;
 	}
+
+	@PostMapping("/api/postBody")
+	public Boolean postBody(@RequestBody List<Integer> inputData, @RequestParam("first") Boolean first) {
+		for (Integer test : inputData) {
+			System.out.println(test);
+		}
+		return first;
+
+	}
+
+	@PostMapping("/api/collect")
+	public void collect(@RequestBody List<Integer> data) {
+		List<Integer> test1 = new ArrayList<>();
+		test1.add(1);
+		test1.add(2);
+		test1.add(3);
+		test1.add(1);
+		for(Integer test2:test1){
+			System.out.println(test2);
+		}
+
+		Set<Integer> test3 = new HashSet<>();
+		test3.add(1);
+		test3.add(2);
+		test3.add(1);
+		test3.add(1);
+		for(Integer test4: test3)
+		{
+			System.out.println(test4);
+		}
+
+	}
+
 }
+
+
