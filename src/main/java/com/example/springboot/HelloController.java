@@ -73,7 +73,7 @@ public class HelloController {
 		test1.add(2);
 		test1.add(3);
 		test1.add(1);
-		for(Integer test2:test1){
+		for (Integer test2 : test1) {
 			System.out.println(test2);
 		}
 
@@ -82,13 +82,50 @@ public class HelloController {
 		test3.add(2);
 		test3.add(1);
 		test3.add(1);
-		for(Integer test4: test3)
-		{
+		for (Integer test4 : test3) {
+			System.out.println(test4);
+		}
+
+	}
+
+	@PostMapping("/api/information")
+	public String information(@RequestBody String input) {
+		System.out.println(input);
+		return input;
+	}
+
+	@PostMapping("/api/task")
+	public void task(@RequestBody List<Integer> data) {
+
+		List<Integer> test1 = new ArrayList<>();
+		test1.add(2);
+		test1.add(4);
+		test1.add(6);
+		test1.add(8);
+		test1.add(16);
+		for (Integer test2 : test1) {
+			System.out.println(test2*2);
+		}
+
+		Set<Integer> test3 = new HashSet<>();
+		test3.add(1);
+		test3.add(2);
+		test3.add(3);
+		test3.add(45);
+		test3.add(5);
+		test3.add(5);
+		test3.add(5);
+		test3.add(7);
+		test3.add(7);
+		test3.add(88);
+		for (Integer test4 : test3) {
 			System.out.println(test4);
 		}
 
 	}
 
 }
+
+
 
 
