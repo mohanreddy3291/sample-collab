@@ -1,9 +1,4 @@
 package com.example.springboot.controller;
-
-import com.example.springboot.service.CustomerService;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -14,9 +9,6 @@ import java.util.Set;
 @RestController
 public class HelloController {
 
-	@Autowired
-	CustomerService customerService;
-
 	@GetMapping("/")
 	public String index() {
 		return "Greetings from Spring Boot!";
@@ -24,7 +16,7 @@ public class HelloController {
 
 
 	@GetMapping("/saveData")
-	public  String saveData() {
+	public String saveData() {
 
 
 		return "";
@@ -32,13 +24,13 @@ public class HelloController {
 
 	@GetMapping("/api/sum/{first}/{second}")
 	public Integer sum(@PathVariable("first") Integer first, @PathVariable("second") Integer second) {
-		return customerService.sum(first, second);
+		return first + second;
 	}
 
 
 	@GetMapping("/api/sum")
 	public Integer sumWithRequest(@RequestParam("number1") Integer number1, @RequestParam("number2") Integer number2) {
-		return customerService.sum(number1, number2);
+		return number1 + number2;
 	}
 
 	// localhost:8082/api/multiply/2?number=120  =expectedResult = 240 - use only reuest Param
@@ -56,7 +48,7 @@ public class HelloController {
 		testList.add(5);
 		testList.add(3);
 		testList.add(4);
-		for (Integer test: testList) {
+		for (Integer test : testList) {
 			System.out.println(test);
 		}
 
@@ -69,22 +61,74 @@ public class HelloController {
 		testSet.add(3);
 		testSet.add(2);
 
-		for (Integer testSEtt: testSet) {
+		for (Integer testSEtt : testSet) {
 			System.out.println(testSEtt);
 		}
+	}
 
-//		1. // Input ["Name -", "Class -", "Subject- "] - output - ["Name - xxcxcfdg", "Class - fdfg", "Subject- fsdg"]
-		//2. Input [2, 4, 6, 8, 16] - output - [4, 8, 12, 16,32]
-		// 3. Input [1,2,3,45,5,5,5,7,7,88] - output - 	Input [1,2,3,45,5,7,88]
+	@PostMapping("/api/postBody")
+	public String postBody(@RequestBody String input, @RequestParam("number1") String number1) {
+		System.out.println(input);
+		return number1;
+	}
 
+	//1. Input ["Name -", "Class -", "Subject- "] - output - ["Name - xxcxcfdg", "Class - fdfg", "Subject- fsdg"]
+	@PostMapping("/api/testTask")
+	public List<String> testTask(@RequestBody List<String> inputData) {
+		List<String> listToReturn = new ArrayList<>();
+		for (String test: inputData) {
+			if (test.equalsIgnoreCase("Name -")) {
+				String data = test + "-Kundana";
+				listToReturn.add(data);
+			}
+			if (test.equalsIgnoreCase("Class -")) {
+				String data = test + "-Java";
+				listToReturn.add(data);
+			}
+			if (test.equalsIgnoreCase("Subject -")) {
+				String data = test + "-Spring";
+				listToReturn.add(data);
+			}
 
+		}
+		return listToReturn;
+	}
 
+	//2. Input [2, 4, 6, 8, 16] - output - [4, 8, 12, 16,32]
+	@PostMapping("/api/postTask2")
+	public List<Integer> postTask2(@RequestBody List<Integer> inputData)
+	{
+		List<Integer> returnList = new ArrayList<>();
+		for (Integer test : inputData) {
+			returnList.add(test*2);
+		}
+		return returnList;
+	}
 
+// 3. Input [1,2,3,45,5,5,5,7,7,88] - output - 	Input [1,2,3,45,5,7,88]
 
-
+	@PostMapping("/api/postTask3")
+	public List<Integer> postTask3(@RequestBody List<Integer> inputData){
+		List<Integer> returnList = new ArrayList<>();
+		Set<Integer> set = new HashSet<>();
+		for(Integer input : inputData){
+			set.add(input);
+		}
+		returnList.addAll(set);
+		return returnList;
 	}
 
 
 
 
+
+
 }
+
+
+
+
+
+
+
+
