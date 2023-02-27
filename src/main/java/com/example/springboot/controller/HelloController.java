@@ -118,11 +118,55 @@ public class HelloController {
 		return returnList;
 	}
 
+// input - ["check", "account", "data", "deposit"]  output - ["check01", "account02","data03", "deposit04"]
+
+	@PostMapping("/api/testTask1")
+	public List<String> testTask1(@RequestBody List<String> inputData) {
+		List<String> listToReturn = new ArrayList<>();
+		for (String test: inputData) {
+			if (test.equalsIgnoreCase("check")) {
+				String data = test + "-check01";
+				listToReturn.add(data);
+			}
+			if (test.equalsIgnoreCase("account")) {
+				String data = test + "-account02";
+				listToReturn.add(data);
+			}
+			if (test.equalsIgnoreCase("data")) {
+				String data = test + "-data03";
+				listToReturn.add(data);
+			}
+			if(test.equalsIgnoreCase("deposit")){
+				String data = test + "-deposit04";
+				listToReturn.add(data);
+			}
+
+		}
+		return listToReturn;
+	}
+
+	//  check if list is empty(any list) - output - boolean (true/false)
+
+	@PostMapping("/api/testTask2")
+	public List<Integer> testTask2(@RequestBody List<Integer> inputData){
+		List<Boolean> test = new ArrayList<>();
+		for(Integer test1: inputData){
+		String output = Boolean.();
+		}
+		}
+	}
+
+// take input of integers, divide each elements by 2 and add 2 - output - List with answers
+@PostMapping("/api/testTask3")
+	public List<Integer> testTask3(@RequestBody List<Integer> inputData){
+		List<Integer> test2 = new ArrayList<>();
+		for(Integer test3: inputData){
+			test2.add((test3/2)+2);
+		}
 
 
-
-
-
+		return test2;
+}
 }
 
 
