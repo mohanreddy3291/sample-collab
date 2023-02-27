@@ -119,6 +119,9 @@ public class HelloController {
 
 	}
 
-//		1. // Input ["Name -", "Class -", "Subject- "] - output - ["Name - testName", "Class - testClass", "Subject- testSubject"]
-//2. Input [2, 4, 6, 8, 16] - output - [4, 8, 12, 16,32]
-// 3. Input [1,2,3,45,5,5,5,7,7,88] - output - 	Input [1,2,3,45,5,7,88]
+	// input - ["check", "account", "data", "deposit"]  output - ["check01", "account02","data03", "deposit04"]
+
+//  check if list is empty(any list) - output - boolean (true/false)
+
+// take input of integers, divide each elements by 2 and add 2 - output - List with answers
+
