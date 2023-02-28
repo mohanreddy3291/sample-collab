@@ -1,16 +1,11 @@
 package com.example.springboot.controller;
 
 import com.example.springboot.service.CustomerService;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import org.hibernate.persister.entity.SingleTableEntityPersister;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.security.PublicKey;
+import java.util.*;
 
 @RestController
 public class HelloController {
@@ -107,10 +102,37 @@ public class HelloController {
 			set.add(input);
 		}
 		returnList.addAll(set);
-		return  returnList;
+		return returnList;
 	}
 
 
+	@GetMapping("/api/mapE")
+	public void mapE() {
+		Map<String, String > testMap = new HashMap<>();
+		testMap.put("A","testA");
+		testMap.put("B","testB");
+		testMap.put("C","testC");
+		testMap.put("D","testD");
+		testMap.put("E","testE");
+		testMap.put("F","testF");
+
+		System.out.println(testMap.get("A"));
+		System.out.println(testMap.get("B"));
+		System.out.println(testMap.get("C"));
+		System.out.println(testMap.get("D"));
+		System.out.println(testMap.get("E"));
+		System.out.println(testMap.get("F"));
+
+		Map<String, List<String>> studentMap = new HashMap<>();
+		List<String> classAList = new ArrayList<>();
+		classAList.add("Test1");
+		classAList.add("Test2");
+		classAList.add("Test3");
+		classAList.add("Test4");
+		studentMap.put("A",classAList);
+
+
+	}
 
 
 
