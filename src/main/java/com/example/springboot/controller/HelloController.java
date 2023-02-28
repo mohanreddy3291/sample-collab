@@ -148,11 +148,14 @@ public class HelloController {
 	//  check if list is empty(any list) - output - boolean (true/false)
 
 	@PostMapping("/api/testTask2")
-	public List<Integer> testTask2(@RequestBody List<Integer> inputData){
+	public boolean testTask2(@RequestBody List<Integer> inputData){
 		List<Boolean> test = new ArrayList<>();
-		for(Integer test1: inputData){
-		String output = Boolean.();
+		List test1 = inputData;
+		if (test1.isEmpty()){
+			return false;
 		}
+		else {
+			return true;
 		}
 	}
 
