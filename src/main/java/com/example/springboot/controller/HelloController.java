@@ -128,6 +128,11 @@ public void postData(@RequestBody Vector<Integer> inputData) {
 			Integer max=Collections.max(list);
 			System.out.println(max);
 		}
+		@GetMapping("task3/operation")
+	public void task()
+		{
+
+		}
 
 
 
