@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -64,6 +65,20 @@ public class HelloController {
 
         }
         return listToReturn;
+    }
+    @GetMapping("/api/task")
+    public void Map()
+    {
+        List<Integer> list=new ArrayList<>();
+        list.add(4);
+        list.add(7);
+        list.add(8);
+        list.add(12);
+        list.add(20);
+        Integer m= Collections.max(list);
+        System.out.println("The biggest value is:"+m);
+
+
     }
 }
 
