@@ -1,9 +1,9 @@
 package com.example.springboot;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class HelloController {
@@ -41,4 +41,62 @@ public class HelloController {
 		Integer multiply = frst * scnd;
 		return multiply;
 	}
+
+	@PostMapping("/api/collections")
+	public void postdata(@RequestBody List<Integer> inputData)
+	{
+		for(Integer test: inputData)
+		{
+			System.out.println(test);
+		}
+	}
+
+	@PostMapping("/api/Bool")
+	public boolean Bool(@RequestBody List<String> inputData) {
+		List<String> list = new ArrayList<>();
+		List list1 = inputData;
+		if (list1.isEmpty()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	@PostMapping("/api/Example")
+	public List<Integer> Example(@RequestBody List<Integer> inputData) {
+		List<Integer> List = new ArrayList<>();
+		for (Integer input : inputData) {
+			List.add((input / 2) + 2);
+			System.out.println(List);
+		}
+		return List;
+
+	}
+
+	@PostMapping("/api/testTask")
+	public List<String> testTask(@RequestBody List<String> inputData) {
+		List<String> listToReturn = new ArrayList<>();
+		for (String test : inputData) {
+			if (test.equalsIgnoreCase("Check -")) {
+				String data = "-Check01";
+				listToReturn.add(data);
+			}
+			if (test.equalsIgnoreCase("account -")) {
+				String data = "-account02";
+				listToReturn.add(data);
+			}
+			if (test.equalsIgnoreCase("data -")) {
+				String data = "-data03";
+				listToReturn.add(data);
+			}
+			if (test.equalsIgnoreCase("deposit -")) {
+				String data = "-deposit04";
+				listToReturn.add(data);
+			}
+
+		}
+		return listToReturn;
+	}
 }
+
+
