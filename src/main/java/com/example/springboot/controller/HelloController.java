@@ -20,7 +20,7 @@ public class HelloController {
 
 
 	@GetMapping("/saveData")
-	public  String saveData() {
+	public String saveData() {
 
 
 		return "";
@@ -52,7 +52,7 @@ public class HelloController {
 		testList.add(5);
 		testList.add(3);
 		testList.add(4);
-		for (Integer test: testList) {
+		for (Integer test : testList) {
 			System.out.println(test);
 		}
 
@@ -65,17 +65,16 @@ public class HelloController {
 		testSet.add(3);
 		testSet.add(2);
 
-		for (Integer testSEtt: testSet) {
+		for (Integer testSEtt : testSet) {
 			System.out.println(testSEtt);
 		}
 	}
 
 
-
-		@PostMapping("/api/testTask")
-		public List<String> testTask(@RequestBody List<String> inputData) {
-				List<String> listToReturn = new ArrayList<>();
-		for (String test: inputData) {
+	@PostMapping("/api/testTask")
+	public List<String> testTask(@RequestBody List<String> inputData) {
+		List<String> listToReturn = new ArrayList<>();
+		for (String test : inputData) {
 			if (test.equalsIgnoreCase("Name -")) {
 				String data = test + "-testName";
 				listToReturn.add(data);
@@ -108,13 +107,13 @@ public class HelloController {
 
 	@GetMapping("/api/mapE")
 	public void mapE() {
-		Map<String, String > testMap = new HashMap<>();
-		testMap.put("A","testA");
-		testMap.put("B","testB");
-		testMap.put("C","testC");
-		testMap.put("D","testD");
-		testMap.put("E","testE");
-		testMap.put("F","testF");
+		Map<String, String> testMap = new HashMap<>();
+		testMap.put("A", "testA");
+		testMap.put("B", "testB");
+		testMap.put("C", "testC");
+		testMap.put("D", "testD");
+		testMap.put("E", "testE");
+		testMap.put("F", "testF");
 
 		System.out.println(testMap.get("A"));
 		System.out.println(testMap.get("B"));
@@ -129,21 +128,13 @@ public class HelloController {
 		classAList.add("Test2");
 		classAList.add("Test3");
 		classAList.add("Test4");
-		studentMap.put("A",classAList);
+		studentMap.put("A", classAList);
 
 
 	}
 
 
+}
 
-
-
-
-	}
-
-	// input - ["check", "account", "data", "deposit"]  output - ["check01", "account02","data03", "deposit04"]
-
-//  check if list is empty(any list) - output - boolean (true/false)
-
-// take input of integers, divide each elements by 2 and add 2 - output - List with answers
-
+// pass list of numbers as input and store each number to a map. and print mapped values
+// [1,2,3,5,8,3,72,83] - find the highest number from this list.
