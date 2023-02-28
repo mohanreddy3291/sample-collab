@@ -2,10 +2,9 @@ package com.example.springboot;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.*;
+import java.lang.String;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 public class HelloController {
@@ -89,9 +88,10 @@ public class HelloController {
 	}
 
 	@PostMapping("/api/information")
-	public String information(@RequestBody String input) {
+	public String information(@RequestBody List<String> input) {
+
 		System.out.println(input);
-		return input;
+		return input.toString();
 	}
 
 	@PostMapping("/api/task")
@@ -104,7 +104,7 @@ public class HelloController {
 		test1.add(8);
 		test1.add(16);
 		for (Integer test2 : test1) {
-			System.out.println(test2*2);
+			System.out.println(test2 * 2);
 		}
 
 		Set<Integer> test3 = new HashSet<>();
@@ -124,8 +124,55 @@ public class HelloController {
 
 	}
 
-}
+	@PostMapping("/api/testTask")
+	public List<String> testTask(@RequestBody List<String> inputData) {
+		List<String> listToReturn = new ArrayList<>();
+		for (String test : inputData) {
+			if (test.equalsIgnoreCase("Check -")) {
+				String data = "-Check01";
+				listToReturn.add(data);
+			}
+			if (test.equalsIgnoreCase("account -")) {
+				String data = "-account02";
+				listToReturn.add(data);
+			}
+			if (test.equalsIgnoreCase("data -")) {
+				String data = "-data03";
+				listToReturn.add(data);
+			}
+			if (test.equalsIgnoreCase("deposit -")) {
+				String data = "-deposit04";
+				listToReturn.add(data);
+			}
 
+		}
+		return listToReturn;
+	}
+
+	@PostMapping("/api/Example")
+	public List<Integer> Example(@RequestBody List<Integer> inputData) {
+		List<Integer> List = new ArrayList<>();
+		for (Integer input : inputData) {
+			List.add((input / 2) + 2);
+			System.out.println(List);
+		}
+		return List;
+
+	}
+
+	@PostMapping("/api/Bool")
+	public boolean Bool(@RequestBody List<String> inputData) {
+		List<String> list = new ArrayList<>();
+		List list1 = inputData;
+		if (list1.isEmpty()) {
+			return false;
+		}
+        else
+		{
+			return true;
+		}
+	}
+}
 
 
 
