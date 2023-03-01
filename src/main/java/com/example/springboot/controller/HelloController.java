@@ -217,6 +217,15 @@ public class HelloController {
 
 
 	}
+	@GetMapping("/api/reddy")
+	public void reddy(){
+		List<Integer> c = new ArrayList<>();
+		c.add(20);
+		c.add(21);
+		c.add(22);
+		Integer d = Collections.max(c);
+		System.out.println(d);
+	}
 	
 }
 
