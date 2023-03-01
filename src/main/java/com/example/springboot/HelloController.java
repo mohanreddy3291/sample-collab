@@ -1,8 +1,8 @@
 package com.example.springboot;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.*;
 
 
 @RestController
@@ -57,6 +57,30 @@ public class HelloController {
 //	}
 
 	//localhost : 8082/api/multiply/2? number = 120
+
+	@PostMapping("/api/setExample")
+
+	public List<Integer> setExample(@RequestBody List<Integer> inputData)
+
+	List<Integer> returnList = new ArrayList<>();
+	Set<Integer> set = new HashSet<>();
+	for (Integer input :inputData)
+	{
+		set.add(input);
+	}
+
+	returnList.addAll(set){
+		return returnList;
+
+	}
+//	public List<Integer> getReturnList() {
+//		return returnList;
+//	}
+
+	Map<String, String > map = new HashMap<>();
+	map.put("A", "TEst");
+
+	map.put("A", "TEst");2
 
 
 }
