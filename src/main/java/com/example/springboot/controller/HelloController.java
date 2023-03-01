@@ -125,19 +125,28 @@ public void postData(@RequestBody Vector<Integer> inputData) {
 	public void big()
 		{
 			List<Integer> list= Arrays.asList(1,5,8,99,100);
+			System.out.println(list);
 			Integer max=Collections.max(list);
-			System.out.println(max);
+			System.out.println("The Highest Value is:"+max);
 		}
-		@GetMapping("task3/operation")
-	public void task()
+		@PostMapping("task3/operation")
+	public void task(@RequestBody List<Integer> input)
 		{
+		Map<String,Integer>m=new HashMap<>();
+			Integer max=Collections.max(input);
+			System.out.println("The List is:"+input);
+			m.put("a",max);
+			System.out.println();
+			System.out.println("The Highest Value is :"+m.get("a"));
+		}
+
+
 
 		}
 
 
 
 
-		}
 
 
 
