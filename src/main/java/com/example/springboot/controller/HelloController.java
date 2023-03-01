@@ -70,7 +70,9 @@ public class HelloController {
 		}
 	}
 
-
+	//// Input ["Name -", "Class -", "Subject- "] - output - ["Name - xxcxcfdg", "Class - fdfg", "Subject- fsdg"]
+	//2. Input [2, 4, 6, 8, 16] - output - [4, 8, 12, 16,32]
+	// 3. Input [1,2,3,45,5,5,5,7,7,88] - output - 	Input [1,2,3,45,5,7,88]
 	@PostMapping("/api/testTask")
 	public List<String> testTask(@RequestBody List<String> inputData) {
 		List<String> listToReturn = new ArrayList<>();
@@ -93,7 +95,7 @@ public class HelloController {
 	}
 
 
-	@PostMapping("/api/setExample")
+	@PostMapping("/api/setExam")
 	public List<Integer> setExample(@RequestBody List<Integer> inputData) {
 		List<Integer> returnList = new ArrayList<>();
 		Set<Integer> set = new HashSet<>();
@@ -104,7 +106,78 @@ public class HelloController {
 		return returnList;
 	}
 
+	@PostMapping("/api/Example")
+	public List<Integer> Example(@RequestBody List<Integer> inputData) {
+		List<Integer> returnList = new ArrayList<>();
+		for (Integer result : inputData) {
+			result = result * 2;
+			returnList.add(result);
+		}
+		return returnList;
+	}
 
+	//input - ["check", "account", "data", "deposit"] output - ["check01", "account02","data03", "deposit04"]
+	//check if list is empty(any list)- output- Boolean(true/false)
+	//take input of integers, divide each element by 2 and add 2 -output- list with answers
+	@PostMapping("/api/Empty")
+	public void Empty(@RequestBody List<String> inputData) {
+		for (String i : inputData) {
+			System.out.println(i.isEmpty());
+		}
+	}
+	@PostMapping("/api/Bool")
+	public void bool(@RequestBody List<String> inputData) {
+		for (String a : inputData) {
+			System.out.println(a);
+		}
+		if (inputData.isEmpty()) {
+			System.out.println("true");
+		} else {
+			System.out.println("false");
+		}
+	}
+
+	@PostMapping("/api/Div&add")
+	public List<Integer> Arth(@RequestBody List<Integer> inputData) {
+		List<Integer> returnList = new ArrayList<>();
+		for (Integer result : inputData) {
+			result = (result / 2) + 2;
+			returnList.add(result);
+		}
+		return returnList;
+	}
+
+	@PostMapping("/api/replicate")
+	public List<String> rep(@RequestBody List<String> inputData) {
+		List<String> returnList = new ArrayList<>();
+		for (String i : inputData) {
+			System.out.println(i);
+			returnList.add(i);
+		}
+		return returnList;
+	}
+
+	@PostMapping("/api/rep")
+	public List<String> rep1(@RequestBody List<String> inputData) {
+		List<String> listToReturn = new ArrayList<>();
+		for (String test : inputData) {
+			if (test.equalsIgnoreCase("check -")) {
+				String data = test + "-check01";
+				listToReturn.add(data);
+			}
+			if (test.equalsIgnoreCase("account -")) {
+				String data = test + "-account02";
+				listToReturn.add(data);
+			}
+			if (test.equalsIgnoreCase("deposit -")) {
+				String data = test + "-deposit";
+			}
+		}
+		return listToReturn;
+	}
+
+	// pass list of numbers as input and store each number to a map. and print mapped values
+// [1,2,3,5,8,3,72,83] - find the highest number from this list.
 	@GetMapping("/api/mapE")
 	public void mapE() {
 		Map<String, String> testMap = new HashMap<>();
@@ -132,9 +205,23 @@ public class HelloController {
 
 
 	}
+	@GetMapping("/api/aki")
+	public void aki(){
+		Map<Integer, List<String>> a = new HashMap<>();
+		List<String> b = new ArrayList<>();
+		b.add("12");
+		b.add("13");
+		b.add("14");
+		a.put(1, b);
+		System.out.println(a.get(1));
 
 
+	}
+	
 }
 
-// pass list of numbers as input and store each number to a map. and print mapped values
-// [1,2,3,5,8,3,72,83] - find the highest number from this list.
+
+
+
+
+
