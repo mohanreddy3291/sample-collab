@@ -5,9 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @RestController
 public class HelloController {
@@ -80,5 +78,19 @@ public class HelloController {
 
 
     }
+    @GetMapping("api/key")
+    public void TestMap() {
+        Map<Integer, List<String>> map1 = new HashMap<>();
+        List<String> l = new Vector<>();
+        l.add("10");
+        l.add("9");
+        l.add("8");
+        l.add("7");
+        l.add("6");
+        map1.put(1, l);
+        System.out.println(map1.get(1));
+    }
 }
 
+// pass list of numbers as input and store each number to a map. and print mapped values
+// [1,2,3,5,8,3,72,83] - find the highest number from this list.
