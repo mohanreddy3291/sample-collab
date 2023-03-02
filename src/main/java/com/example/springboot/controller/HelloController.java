@@ -132,6 +132,53 @@ public class HelloController {
 
 
 	}
+	@PostMapping("/api/exceptions")
+	public String exceptions(@RequestBody List<Integer> integerList) {
+		try {
+			checkList(integerList);
+		} catch (Exception e) {
+			System.out.println("Exception occured");
+		}
+		return "Exception Handled";
+
+	}
+
+
+	private String checkList(List<Integer> integerList) throws Exception {
+		if (integerList.isEmpty()) {
+			throw new Exception("Give me the list");
+		}
+		return null;
+	}
+
+
+	@PostMapping("/api/exceptions/numbers")
+	public String exceptionsNumbers(@RequestBody List<Integer> integerList) {
+		try {
+			checkIfValidNumbers(integerList);
+		} catch (Exception e) {
+			System.out.println("Continue with Logic");
+		}
+
+		System.out.println("Continue with Logic1");System.out.println("Continue with Logic2");System.out.println("Continue with Logic3");
+
+		return "Success";
+	}
+
+	private boolean checkIfValidNumbers(List<Integer> integerList) throws Exception{
+
+		if (integerList.size() == 10) {
+			return true;
+		} else {
+			throw new Exception("List is not match as per business");
+		}
+
+	}
+
+
+
+
+
 
 
 }
