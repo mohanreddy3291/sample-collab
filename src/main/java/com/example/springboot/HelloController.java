@@ -80,9 +80,19 @@ public class HelloController {
 	Map<String, String > map = new HashMap<>();
 	map.put("A", "TEst");
 
-	map.put("A", "TEst");2
+	map.put("A", "TEst");
+
+}
+
 
 
 }
 
+	for(Integer testSEtt: testSet){
+
+		System.out.println(testSEtt);
+
+		}}
+
+@PostMapping("/api/")
 
