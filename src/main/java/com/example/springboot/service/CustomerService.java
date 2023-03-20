@@ -9,6 +9,17 @@ public class CustomerService {
 
             return num1 + num2;
         }
-
+public void Exception(Integer input)
+{
+    try {
+        Integer i = input / 0;
+    }
+    catch(Exception e)
+    {
+        e.printStackTrace();
+    }
+    System.out.println("Program Execution Continues.......");
+    System.out.println("Arithmetic Exception");
+}
 
 }
