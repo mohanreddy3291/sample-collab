@@ -132,6 +132,13 @@ public class HelloController {
 
 
 	}
+	@GetMapping("/api/getResult/{number1}")
+	public Integer index6(@PathVariable("number1") Integer number1, @RequestParam("numberT") Integer numberT, @RequestParam("numberK") Integer numberK) {
+		return number1 + numberT + numberK;
+	}
+
+
+
 
 
 }
