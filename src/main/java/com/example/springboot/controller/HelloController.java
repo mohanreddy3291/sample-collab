@@ -1,6 +1,7 @@
-package com.example.springboot;
+package com.example.springboot.controller;
 
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 @RestController
@@ -27,39 +28,18 @@ public class HelloController {
 
 		return multiply;
 	}
-	// localhost:8082/api/multiply/2?number=120  =expectedResult = 240 - use only reuest Param
+	// localhost:8082/api/multiply/2?number=120  =expectedResult = 240 - use only request Param
 
 
 	@PostMapping("/api/collection")
-	public void postData(@RequestBody List<Integer> inputData) {
-		//this is test committed file
+	public List<Integer> postData(@RequestBody List<Integer> inputData) {
+		//this is tested committed file
+		List<Integer> testList = new ArrayList<>();
 
-		//List<Integer> testList = new ArrayList<>();
-		/*testList.add(1);
-		testList.add(2);
-		testList.add(3);
-		testList.add(4);
-		testList.add(5);
-		testList.add(3);
-		testList.add(4);*/
-		for (Integer test : inputData) {
-			System.out.println(test);
-		}
+		testList.addAll(inputData);
+		return testList;
 
-		/*Set<Integer> testSet = new HashSet<>();
-		testSet.add(1);
-		testSet.add(1);
-		testSet.add(3);
-		testSet.add(54);
-		testSet.add(2);
-		testSet.add(3);
-		testSet.add(2);
-
-		for (Integer testSEtt: testSet) {
-			System.out.println(testSEtt);
-		}*/
-
-//		1. // Input ["Name -", "Class -", "Subject- "] - output - ["Name - xxcxcfdg", "Class - fdfg", "Subject- fsdg"]
+//		1. // Input ["Name -", "Class -", "Subject- "] - output - ["Name - name", "Class - class", "Subject- subject"]
 		//2. Input [2, 4, 6, 8, 16] - output - [4, 8, 12, 16,32]
 		// 3. Input [1,2,3,45,5,5,5,7,7,88] - output - 	Input [1,2,3,45,5,7,88]
 
@@ -119,7 +99,7 @@ public class HelloController {
 	}
 
 	@PostMapping("/api/Div&add")
-	public List<Integer> Arth(@RequestBody List<Integer> inputData) {
+	public List<Integer> calculation(@RequestBody List<Integer> inputData) {
 		List<Integer> returnList = new ArrayList<>();
 		for (Integer result : inputData) {
 			result = (result / 2) + 2;
@@ -216,6 +196,7 @@ public class HelloController {
 
 		return b;
 	}
+	
 }
 
 
