@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class PatientController {
 
@@ -15,10 +17,14 @@ public class PatientController {
     @Autowired
     private PatientService patientService;
 
+    // save patient details which has address only..
+    // validate if first name and last name is given in the request
+    // check if every patient has age greater than 25
+    // Return ResponseEntity with body -- google it....
 
     @PostMapping("/api/savePatientDetails")
-    public Patient savePatientDetails(@RequestBody Patient patient) {
-       return patientService.savePatient(patient);
+    public List<Patient> savePatientDetails(@RequestBody List<Patient> patientList) {
+       return patientService.savePatient(patientList);
     }
 
 
