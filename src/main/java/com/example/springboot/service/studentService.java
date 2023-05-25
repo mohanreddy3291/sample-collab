@@ -10,7 +10,7 @@ public class studentService {
     @Autowired
     private studentRepository studentRepository;
     public student saveStudent(student data){
-        student saveStudent = studentRepository.save(data);
-        return saveStudent;
+        student savedStudent = studentRepository.save(data);
+        return savedStudent;
     }
 }

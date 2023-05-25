@@ -14,6 +14,7 @@ public class studentController {
     private studentService studentService;
     @PostMapping("/api/saveStudentDetails")
     public student saveStudentDetails(@RequestBody student inputData){
+
         return studentService.saveStudent(inputData);
     }
 }

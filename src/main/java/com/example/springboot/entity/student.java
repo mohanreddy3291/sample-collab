@@ -9,12 +9,11 @@ import jakarta.persistence.Table;
 @Table(name = "student")
 public class student {
     @Id
-    private int studentNumber;
+    private Integer studentNumber;
     @Column(name = "first_name")
     private String firstName;
     private String lastName;
     private String email;
-    private int number;
     private int age;
 
     public void setFirstName(String firstName) {
@@ -39,14 +38,6 @@ public class student {
 
     public String getEmail() {
         return email;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public int getNumber() {
-        return number;
     }
 
     public void setAge(int age) {
