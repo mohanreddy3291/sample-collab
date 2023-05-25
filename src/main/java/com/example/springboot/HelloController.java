@@ -166,13 +166,51 @@ public class HelloController {
 		List list1 = inputData;
 		if (list1.isEmpty()) {
 			return false;
-		}
-        else
-		{
+		} else {
 			return true;
 		}
 	}
+
+
+	@PostMapping("/api/map")
+	public Map<String, Integer> map(@RequestBody List<Integer> numbers) {
+		Map<String, Integer> map = new HashMap<>();
+
+		for (Integer list : numbers) {
+			map.put("A", list);
+			System.out.println(map.get("A"));
+		}
+		return map;
+	}
+	@GetMapping("/api/mappe")
+	public void mappe(){
+		Map<String, List<Integer> > testMap = new HashMap<>();
+		List<Integer> classA = new ArrayList<>();
+		classA.add(1);
+		classA.add(2);
+		classA.add(3);
+		testMap.put("A", classA);
+		System.out.println(testMap.get("A"));
+
+	}
+
+	@PostMapping("/api/max")
+	public int max(@RequestBody List<Integer> inputData) {
+		int max_num= Integer.MIN_VALUE;
+
+		for (Integer input : inputData) {
+			if (max_num < input)
+			{
+				max_num = input;
+			}
+		}
+
+		return max_num;
+	}
+
 }
 
+// pass list of numbers as input and store each number to a map. and print mapped values
+// [1,2,3,5,8,3,72,83] - find the highest number from this list.
 
 
