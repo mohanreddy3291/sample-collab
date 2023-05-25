@@ -9,10 +9,12 @@ import jakarta.persistence.*;
 @Table(name="Employee")
 public class Employee
 {
+    //This is an example for storing the employe data into database
     @Id
     private String emp_id;
-
+    @Column(name="First_Name")
     private String FirstName;
+    @Column(name="Last_Name")
     private String lastName;
     private int Age;
     private String Gender;
