@@ -16,10 +16,10 @@ public class customerService {
     public List<customer> saveCustomer(List<customer> customerList) {
         List<customer> returnCustomer = new ArrayList<>();
         for (customer customer1 : customerList) {
-            if(customer1.getAddress() != null && customer1.getFirstName() != null && customer1.getLastName() != null && customer1.getAge() > 25){
+           // if(customer1.getAddress() != null && customer1.getFirstName() != null && customer1.getLastName() != null && customer1.getAge() > 25){
             customer savedCustomer = customerRepository.save(customer1);
             returnCustomer.add(savedCustomer);
-            }
+            //}
             /*else if (customer1.getFirstName() != null) {
                 customer savedCustomer = customerRepository.save(customer1);
                 returnCustomer.add(savedCustomer);
@@ -32,9 +32,9 @@ public class customerService {
                 customer savedCustomer = customerRepository.save(customer1);
                 returnCustomer.add(savedCustomer);
             }*/
-            else {
-                return null;
-            }
+            //else {
+            //    return null;
+            //}
         }
         return returnCustomer;
     }

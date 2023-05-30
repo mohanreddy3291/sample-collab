@@ -2,6 +2,7 @@ package com.example.springboot.controller;
 
 import com.example.springboot.entity.customer;
 import com.example.springboot.service.customerService;
+import com.example.springboot.validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,18 @@ public class customerController {
     private customerService customerService;
     @PostMapping("/api/saveCustomerDetails")
     public ResponseEntity<List<customer>> saveCustomer(@RequestBody List<customer> customerList){
-        return new ResponseEntity<>(customerService.saveCustomer(customerList),HttpStatus.OK );
+        List<customer> response = null;
+        boolean hasValidAddress = validator.validateCustomerAddress(customerList);
+        boolean hasValidAge = validator.validateAge(customerList);
+        boolean hasValidFirstAndLastNames = validator.validateFirstAndLastNames(customerList);
+        if(hasValidAddress &&  hasValidFirstAndLastNames){
+              response = customerService.saveCustomer(customerList) ;
+        }
+        else {
+            new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @GetMapping("/status")
     ResponseEntity<String> home() {
