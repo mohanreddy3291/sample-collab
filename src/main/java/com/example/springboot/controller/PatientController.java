@@ -1,7 +1,8 @@
 package com.example.springboot.controller;
 
 
-import com.example.springboot.Validator;
+import com.example.springboot.entity.doctor;
+import com.example.springboot.validator;
 import com.example.springboot.entity.Patient;
 import com.example.springboot.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.net.http.HttpResponse;
 import java.util.List;
-
+import com.example.springboot.service.doctorService;
 @RestController
 public class PatientController {
 
@@ -27,11 +28,11 @@ public class PatientController {
     // Return ResponseEntity with body -- google it....
 
     @PostMapping("/api/savePatientDetails")
-    public ResponseEntity<List<Patient>> savePatientDetails(@RequestBody List<Patient> patientList) {
-        List<Patient> response = null;
-        boolean hasValidAddress = Validator.validatePatientAddress(patientList);
-        if (hasValidAddress && Validator.validFirstAndLastNames(patientList)) {
-            response = patientService.savePatient(patientList);
+    public ResponseEntity<List<doctor>> savePatientDetails(@RequestBody List<doctor> doctorList) {
+        List<doctor> response = null;
+        boolean hasValidAddress = validator.validatePatientAddress(doctorList);
+        if (hasValidAddress && validator.validFirstAndLastNames(doctorList)) {
+            response = doctorService.saveDoctor(doctorList);
         } else {
             new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }

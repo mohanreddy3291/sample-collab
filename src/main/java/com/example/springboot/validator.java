@@ -19,7 +19,7 @@ public class validator {
 
     public static boolean validFirstAndLastNames(List<doctor> doctorList) {
         boolean hasValidNames = true;
-        for (doctor patient: doctorList) {
+        for (doctor doctor: doctorList) {
             if (doctor.getFirstName() == null || doctor.getLastName() == null) {
                 hasValidNames = false;
                 break;

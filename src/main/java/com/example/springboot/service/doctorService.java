@@ -11,8 +11,8 @@ import java.util.List;
 @Service
 public class doctorService {
     @Autowired
-    private doctorRepo doctorRepo;
-    public List<doctor> saveDoctor(List<doctor> doctorList) {
+    private static doctorRepo doctorRepo;
+    public static List<doctor> saveDoctor(List<doctor> doctorList) {
         List<doctor> returnDoctor = new ArrayList<>();
         for (doctor doctor1: doctorList) {
             doctor saveDoctor = doctorRepo.save(doctor1);
